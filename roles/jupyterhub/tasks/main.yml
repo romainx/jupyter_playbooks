@@ -1,0 +1,8 @@
+# The main is just here to import tasks from other definition files
+---
+
+#- import_tasks: 'packages.yml'
+#- import_tasks: 'directories.yml'
+#- import_tasks: 'config.yml'
+#- import_tasks: 'security.yml'
+- import_tasks: 'scripts.yml'

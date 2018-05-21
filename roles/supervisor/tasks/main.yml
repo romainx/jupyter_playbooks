@@ -1,0 +1,21 @@
+# Install and configure supervisor
+# ref.: http://supervisord.org/
+---
+- name: 'Install Supervisor package'
+  apt: 
+    pkg: 'supervisor'
+    state: present
+
+- name: 'Make sure supervisord is running'
+  service: 
+    name: 'supervisor'
+    enabled: yes
+    state: started
+
+- name: 'Run supervisord as root'
+  lineinfile:
+    dest: '/etc/supervisor/supervisord.conf'
+    state: present
+    line: 'user=root'
+    insertafter: '^\[supervisord\]'
+    backup: yes

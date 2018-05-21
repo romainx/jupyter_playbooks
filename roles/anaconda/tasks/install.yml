@@ -1,0 +1,24 @@
+# Perform the Anaconda installation
+# Install in silent mode, ref.: https://conda.io/docs/user-guide/install/macos.html#install-macos-silent
+---
+# Anaconda installers repo: https://repo.continuum.io/
+- name: 'Download anaconda distribution from the remote repository'
+  tags: 'download'
+  get_url:
+    url: '{{ anaconda_repo }}/{{ anaconda_package }}'
+    dest: '{{ anaconda_package_dest_path }}'
+    checksum: '{{ anaconda_package_checksum }}'
+    mode: 0740
+  
+- name: 'Install anaconda'
+  tags: 'install'
+  command: '{{ anaconda_package_dest_path }} -b -p {{ conda_path }}'
+  args:
+    creates: '{{ conda_path }}'
+  
+- name: 'Cleanup downloaded file'
+  tags: 'clean'
+  file:
+    path: '{{ anaconda_package_dest_path }}'
+    state: absent
+  

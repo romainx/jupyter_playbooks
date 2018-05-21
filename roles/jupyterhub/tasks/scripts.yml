@@ -1,0 +1,23 @@
+# Deploy launch scripts
+---
+
+- name: 'Install Jupyter LabHub launch script'
+  template: 
+    src: 'start-jupyter-labhub.sh.j2'
+    dest: '/usr/local/bin/start-jupyter-labhub.sh'
+    mode: 0777
+
+- name: 'Install Supervisor config for JupyterHub'
+  template: 
+    src: 'jupyterhub.conf.j2'
+    dest: '/etc/supervisor/conf.d/jupyterhub.conf'
+    owner: 'root'
+    group: 'root'
+    mode: 0600
+    backup: yes
+
+- name: 'Install JupyterHub launch script'
+  template: 
+    src: 'start-jupyterhub.sh.j2'
+    dest: '{{ jupyterhub_srv_dir }}/start-jupyterhub.sh'
+    mode: 0700

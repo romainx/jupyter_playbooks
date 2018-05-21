@@ -1,0 +1,21 @@
+# Install packages required by JupyterHub
+---
+- name: 'Install jupyterhub dependencies using conda'
+  tags: 'packages'
+  conda: 
+    name: '{{ item }}'
+    state: present
+    # Need to specify the path of the executable
+    executable: '{{ conda_executable }}'
+  with_items: '{{ jupyterhub_conda }}'
+    
+- name: 'Install jupyterhub using pip'
+  tags: 'packages'
+  pip: 
+    name: '{{ item }}' 
+    state: present
+    editable: false
+    # Need to specify the path of the executable
+    executable: '{{ pip_executable }}'
+  with_items: '{{ jupyterhub_pip }}'
+    

@@ -1,0 +1,7 @@
+# Manage nginx installation
+# Ref.: https://www.nginx.com/
+---
+- name: 'Install NGINX'
+  apt: 
+    pkg: 'nginx-full'
+    state: present

@@ -1,0 +1,26 @@
+# Generating a self-signed certificate
+# Ref.: https://www.jeffgeerling.com/blog/2017/generating-self-signed-openssl-certs-ansible-24s-crypto-modules
+---
+# I think it has to be installed in the default python environement (and not on conda)
+- name: 'Ensure python OpenSSL dependencies are installed'
+  pip:
+    name: 'pyOpenSSL'
+    state: present
+    executable: '{{ ansible_pip_executable }}'
+
+- name: 'Generate an OpenSSL private key'
+  openssl_privatekey:
+    path: '{{ ssl_key }}'
+
+- name: 'Generate an OpenSSL Certificate Signing Request'
+  openssl_csr:
+    path: '{{ ssl_csr }}'
+    privatekey_path: '{{ ssl_key }}'
+    common_name: "{{ server_hostname }}"
+
+- name: 'Generate an OpenSSL self-signed certificate.'
+  openssl_certificate:
+    path: '{{ ssl_cert }}'
+    privatekey_path: '{{ ssl_key }}'
+    csr_path: '{{ ssl_csr }}'
+    provider: selfsigned

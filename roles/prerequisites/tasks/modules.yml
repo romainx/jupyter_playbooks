@@ -1,0 +1,16 @@
+# Download files required for local ansible additional modules
+# Files are put in playbook_dir/library directory
+---
+# Ref. for local_action: http://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html#delegation
+# Ref. for variable playbook_dir: http://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
+- name: 'Download ansible conda module files from the remote repository'
+  tags: 'install'
+  local_action:
+      module: get_url
+      url: '{{ ansible_conda_repo }}/{{ item.src }}'
+      dest: '{{ playbook_dir }}/library/{{ item.dest }}'
+  with_items: '{{ ansible_conda_files }}'
+  become: false
+  
+
+  

@@ -1,0 +1,9 @@
+---
+# The path to the anaconda repo
+anaconda_repo: "https://repo.continuum.io/archive"
+# The information related to the package to install
+anaconda_package: "Anaconda3-{{ anaconda_version }}-Linux-x86_64.sh"
+anaconda_package_checksum: "md5:966406059cf7ed89cc82eb475ba506e5"
+# The location of the package
+anaconda_package_dest_path: "/tmp/anaconda.sh"
+# The path of the anaconda installation is defined as a top level 

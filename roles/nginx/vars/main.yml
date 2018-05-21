@@ -1,0 +1,9 @@
+---
+# SSL elements
+# Private key
+ssl_key: '/etc/ssl/private/{{ ansible_hostname }}.key' 
+# Signing request
+ssl_csr: '/etc/ssl/private/{{ ansible_hostname }}.csr'
+# Certificate
+ssl_cert: '/etc/ssl/certs/{{ ansible_hostname }}.crt'
+

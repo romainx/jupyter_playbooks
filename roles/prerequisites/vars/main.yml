@@ -1,0 +1,8 @@
+---
+# The ansible conda module
+ansible_conda_repo: 'https://github.com/UDST/ansible-conda/raw/master'
+ansible_conda_files: 
+  - src: 'conda.py'
+    dest: 'conda.py'
+  - src: 'LICENSE.txt'
+    dest: 'ansible-conda-LICENSE.txt'

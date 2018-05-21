@@ -1,0 +1,14 @@
+# Manage security.
+# For security see: http://jupyterhub.readthedocs.io/en/latest/getting-started/security-basics.html
+---
+
+# See http://jupyterhub.readthedocs.io/en/latest/getting-started/security-basics.html#cookie-secret
+- name: 'Generate JupyterHub cookie secret file under {{ jupyterhub_srv_dir }}'
+  shell: 'openssl rand -hex 32 > "{{ jupyterhub_srv_dir }}/cookie_secret"'
+  
+- name: 'Secure JupyterHub cookie secret file'
+  file:
+    path: '{{ jupyterhub_srv_dir }}/cookie_secret'
+    owner: 'root'
+    group: 'root'
+    mode: 0600

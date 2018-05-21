@@ -1,0 +1,26 @@
+# Create installation directories with the appropriate permissions
+---
+
+- name: 'Make sure Jupyter & JupyterHub directories exist (1/2)'
+  file: 
+    path: '{{ item }}/'
+    state: directory
+    owner: 'root'
+    group: 'root' 
+    mode: 0755
+  with_items:
+    - '{{ jupyterhub_config_dir }}'
+    - '{{ jupyterhub_log_dir }}'
+    - '{{ jupyter_templates_dir }}'
+    - '{{ jupyter_config_dir }}'
+    - '{{ ipython_config_dir }}'
+
+- name: 'Make sure Jupyter & JupyterHub directories exist (2/2)'
+  file: 
+    path: '{{ item }}/'
+    state: directory
+    owner: 'root'
+    group: 'root' 
+    mode: 0700
+  with_items:
+    - '{{ jupyterhub_srv_dir }}'

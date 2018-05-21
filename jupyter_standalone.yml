@@ -1,0 +1,19 @@
+# Example usage: ansible-playbook -i ./hosts jupyter_playbook.yml --list-tasks
+# This playbook installs JupyterHub on a Ubuntu host
+---
+- name: 'Jupyter Playbook'
+  hosts: ubuntu  #ubuntu host
+  become: true # becoming root by default, check if it's OK
+  become_user: root
+  gather_facts: true
+  
+# Note https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f
+
+  roles:
+    - 'prerequisites'
+    #- 'anaconda' # Anaconda installation
+    #- 'supervisor' 
+    #- 'jupyterhub' # JupyterHub installation
+    - 'nginx'
+    #- 'start_jupyterhub'
+    

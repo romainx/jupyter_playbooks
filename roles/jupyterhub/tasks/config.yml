@@ -1,0 +1,11 @@
+# Configure JupyterHub
+---
+
+- name: 'Install JupyterHub config file'
+  template: 
+    src: 'jupyterhub_config.py.j2' 
+    dest: '{{ jupyterhub_config_dir }}/jupyterhub_config.py' 
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+

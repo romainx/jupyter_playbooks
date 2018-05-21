@@ -1,0 +1,5 @@
+# The main is just here to import tasks from other definition files
+---
+
+- import_tasks: 'modules.yml'
+

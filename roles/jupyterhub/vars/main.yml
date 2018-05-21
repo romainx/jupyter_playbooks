@@ -1,0 +1,22 @@
+---
+# jupyterhub packages that will be installed by conda 
+jupyterhub_conda:
+  - 'configurable-http-proxy'
+# jupyterhub packages that will be installed by pip
+jupyterhub_pip:
+  # It's important to master the version installed since conf. files may change over the time 
+  - 'jupyterhub=={{ jupyterhub_version }}' 
+  #- 'oauthenticator==0.7.2'
+
+# JupyterHub directories
+jupyterhub_srv_dir: '/srv/jupyterhub'
+jupyterhub_config_dir: '/etc/jupyterhub'
+jupyterhub_log_dir: '/var/log/jupyterhub'
+
+# Jupyter directories
+jupyter_config_dir: '/etc/jupyter'
+jupyter_share_dir: '/usr/local/share/jupyter'
+jupyter_templates_dir: '{{ jupyter_config_dir }}/templates'
+
+# IPython config directory
+ipython_config_dir: '/etc/ipython'

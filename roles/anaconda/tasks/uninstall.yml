@@ -1,0 +1,18 @@
+# Uninstall anaconda
+# Ref.: https://conda.io/docs/user-guide/install/macos.html#uninstalling-anaconda-or-miniconda
+---
+- name: Uninstall anaconda distribution
+  file:
+    state: absent
+    path: "{{ anaconda_installation_path }}/"
+  tags: uninstall
+
+- name: Remove hidden files and folders
+  file:
+    state: absent
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+  with_items:
+    - ".condarc"
+    - ".conda"
+    - ".continuum"
+  tags: uninstall
