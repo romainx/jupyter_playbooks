@@ -1,0 +1,16 @@
+# Install pip on the remote host
+# pip needs to be installed since we have to install specific modules that will be used by ansible
+# Ansible is not using the conda distribution
+---
+
+- name: 'Install pip'
+  apt: 
+    pkg: 'python3-pip'
+    state: present
+
+- name: 'Upgrade pip to the latest version'
+  pip:
+    name: 'pip'
+    version: '10.0.1'
+  environment:
+    LC_ALL: 'C' # to fix pip locale error https://stackoverflow.com/questions/36394101/pip-install-locale-error-unsupported-locale-setting

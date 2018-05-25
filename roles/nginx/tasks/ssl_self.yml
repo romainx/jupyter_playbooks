@@ -6,7 +6,7 @@
   pip:
     name: 'pyOpenSSL'
     state: present
-    executable: '{{ ansible_pip_executable }}'
+    #executable: '{{ ansible_pip_executable }}'
 
 - name: 'Generate an OpenSSL private key'
   openssl_privatekey:
@@ -16,7 +16,7 @@
   openssl_csr:
     path: '{{ ssl_csr }}'
     privatekey_path: '{{ ssl_key }}'
-    common_name: "{{ server_hostname }}"
+    common_name: "{{ ansible_hostname }}" # the host name as configured on the machine fact gathered
 
 - name: 'Generate an OpenSSL self-signed certificate.'
   openssl_certificate:

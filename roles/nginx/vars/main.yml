@@ -7,3 +7,7 @@ ssl_csr: '/etc/ssl/private/{{ ansible_hostname }}.csr'
 # Certificate
 ssl_cert: '/etc/ssl/certs/{{ ansible_hostname }}.crt'
 
+# NGINX SSL configuration
+nginx_ssl_path: '/etc/nginx/ssl'
+nginx_ssl_key: '{{ nginx_ssl_path }}/ssl.key'
+nginx_ssl_cert: '{{ nginx_ssl_path }}/ssl.crt'

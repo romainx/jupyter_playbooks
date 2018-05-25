@@ -1,5 +1,5 @@
 # The main is just here to import tasks from other definition files
 ---
 
-- import_tasks: 'modules.yml'
-
+- import_tasks: 'ansible_modules.yml'
+- import_tasks: 'pip.yml'

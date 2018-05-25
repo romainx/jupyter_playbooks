@@ -1,0 +1,29 @@
+# Install SSL certificate on NGINX
+---
+
+- name: 'Make sure {{ nginx_ssl_path }} exists'
+  file: 
+    path: '{{ nginx_ssl_path }}/'
+    state: directory
+    owner: 'root'
+    group: 'root'
+    mode: '0700'
+
+- name: 'Install SSL key'
+  copy: 
+    src: '{{ ssl_key }}' 
+    dest: '{{ nginx_ssl_key }}'
+    owner: 'root' 
+    group: 'root' 
+    mode: 0600
+    remote_src: yes # The copy is made from remote to remote
+  
+- name: 'Install SSL cert'
+  copy: 
+    src: '{{ ssl_cert }}'
+    dest: '{{ nginx_ssl_cert }}'
+    owner: 'root' 
+    group: 'root' 
+    mode: 0600
+    remote_src: yes
+  
