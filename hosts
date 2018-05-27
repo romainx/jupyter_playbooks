@@ -1,3 +1,3 @@
 # It's necessary to define the python interpreter to be able to sudo
 # Reference: https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f
-ubuntu ansible_host=52.47.189.142 ansible_user=ubuntu ansible_ssh_private_key_file=/Users/romaincros/.ssh/ubuntu.pem ansible_python_interpreter=/usr/bin/python3
+ubuntu ansible_host=52.47.48.91 ansible_user=ubuntu ansible_ssh_private_key_file=/Users/romaincros/.ssh/ubuntu.pem ansible_python_interpreter=/usr/bin/python3

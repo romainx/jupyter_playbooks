@@ -9,6 +9,7 @@ conda_path: '/opt/conda'
 # The path to the package managers pip and conda to use remotly
 pip_executable: '{{ conda_path }}/bin/pip'
 conda_executable: '{{ conda_path }}/bin/conda'
+python_executable: '{{ conda_path }}/bin/python'
 
 # The path to pip used by ansible
 ansible_pip_executable: '{{ ansible_python_interpreter }}/bin/pip'

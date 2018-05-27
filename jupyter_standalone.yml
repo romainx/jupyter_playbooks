@@ -13,7 +13,7 @@
     - 'prerequisites'
     #- 'anaconda' # Anaconda installation
     #- 'supervisor' 
-    #- 'jupyterhub' # JupyterHub installation
+    - 'jupyterhub' # JupyterHub installation
     - 'nginx'
-    #- 'start_jupyterhub'
+    - 'start_jupyterhub'
     
