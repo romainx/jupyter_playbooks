@@ -1,0 +1,13 @@
+# Stop JupyterHub and nginx
+---
+- name: 'Stop JupyterHub'
+  tags: ['never', 'stop', 'restart']
+  supervisorctl: 
+    name: 'jupyterhub'
+    state: stopped
+
+- name: 'Stop nginx'
+  tags: ['never', 'stop', 'restart']
+  service: 
+    name: 'nginx'
+    state: stopped

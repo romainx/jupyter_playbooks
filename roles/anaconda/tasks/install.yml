@@ -3,7 +3,6 @@
 ---
 # Anaconda installers repo: https://repo.continuum.io/
 - name: 'Download anaconda distribution from the remote repository'
-  tags: 'download'
   get_url:
     url: '{{ anaconda_repo }}/{{ anaconda_package }}'
     dest: '{{ anaconda_package_dest_path }}'
@@ -11,13 +10,11 @@
     mode: 0740
   
 - name: 'Install anaconda'
-  tags: 'install'
   command: '{{ anaconda_package_dest_path }} -b -p {{ conda_path }}'
   args:
     creates: '{{ conda_path }}'
   
 - name: 'Cleanup downloaded file'
-  tags: 'clean'
   file:
     path: '{{ anaconda_package_dest_path }}'
     state: absent

@@ -1,0 +1,5 @@
+# Perform start, stop and restart operations
+# Ref. for the usage of special ansible tags 'never': http://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html#special-tags
+---
+- import_tasks: 'stop.yml'
+- import_tasks: 'start.yml'

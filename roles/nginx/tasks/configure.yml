@@ -3,6 +3,7 @@
 - name: 'Find notebook static directory'
   command: '{{ python_executable }} -c "import notebook; import os; print(os.path.join(notebook.__path__[0], \"static\"));"'
   register: notebook_static_directory
+  changed_when: false # avoid to throw changed
 
 - name: 'Configure nginx'
   template: 

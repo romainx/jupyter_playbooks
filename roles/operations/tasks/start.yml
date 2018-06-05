@@ -1,0 +1,13 @@
+# Start JupyterHub and nginx
+---
+- name: 'Start nginx'
+  tags: ['never', 'start', 'restart']
+  service: 
+    name: 'nginx'
+    state: started
+
+- name: 'Start JupyterHub'
+  tags: ['never', 'start', 'restart']
+  supervisorctl: 
+    name: 'jupyterhub'
+    state: started

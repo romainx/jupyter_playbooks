@@ -1,6 +1,6 @@
 # Jupyter Playbooks
 
-Installation of **Jupyter + JupyterHub** with various flavors.
+Installation of **Jupyter + JupyterHub**.
 
 See the content of the playbook by running:
 

@@ -15,5 +15,5 @@
     #- 'supervisor' 
     - 'jupyterhub' # JupyterHub installation
     - 'nginx'
-    - 'start_jupyterhub'
+    - 'operations'
     
