@@ -10,10 +10,11 @@
 # Note https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f
 
   roles:
-    - 'prerequisites'
-    #- 'anaconda' # Anaconda installation
-    #- 'supervisor' 
+    - 'prerequisites' # Prerequisites install to run the script
+    - 'anaconda' # Anaconda installation
+    - 'supervisor' # Supervisor install
+    - 'node' # Node upgrade
     - 'jupyterhub' # JupyterHub installation
-    - 'nginx'
-    - 'operations'
+    - 'nginx' # nginx installation
+    - 'operations' # start / stop
     

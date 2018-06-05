@@ -1,0 +1,11 @@
+# Update node js to the latest version
+# Ref.: https://askubuntu.com/questions/426750/how-can-i-update-my-nodejs-to-the-latest-version
+---
+
+- name: 'Install n package globally'
+  npm:
+    name: 'n'
+    global: yes
+
+- name: 'Upgrade node to the latest version'
+  command: 'n stable'
