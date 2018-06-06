@@ -65,7 +65,19 @@ install_bash_kernel: false
 # Cleanup single user servers and the proxy on jupyterhub shutdown. Setting
 # this to false, will allow jupyterhub to be restarted while leaving the proxy
 # and single user servers running.
-cleanup_on_shutdown: false
+cleanup_on_shutdown: true
+
+# ------------------------------------------------------------------------------
+# SSL
+# ------------------------------------------------------------------------------
+
+# SSL using letsencrypt (optional - use letsencrypt default: false) If using
+# letsencrypt to generate SSL key/cert, set `use_letsencrypt` to `true`
+# Otherwise if not using letsencrypt for SSL, an autosigned certificate will be 
+# generated and installed.
+
+use_letsencrypt: false
+letsencrypt_email: ''
 
 # ------------------------------------------------------------------------------
 # OAuth

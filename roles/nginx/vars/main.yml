@@ -8,6 +8,12 @@ ssl_csr: '/etc/ssl/private/{{ ansible_hostname }}.csr'
 ssl_cert: '/etc/ssl/certs/{{ ansible_hostname }}.crt'
 
 # NGINX SSL configuration
+
+# Self-signed
 nginx_ssl_path: '/etc/nginx/ssl'
 nginx_ssl_key: '{{ nginx_ssl_path }}/ssl.key'
 nginx_ssl_cert: '{{ nginx_ssl_path }}/ssl.crt'
+
+# If letsencrypt is used to get SSL cert
+letsencrypt_ssl_key_path: '/etc/letsencrypt/live/{{inventory_hostname}}/privkey.pem'
+letsencrypt_ssl_cert_path: '/etc/letsencrypt/live/{{inventory_hostname}}/fullchain.pem'

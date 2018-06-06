@@ -1,5 +1,12 @@
+# Note about conditional imports
+# Ref.: http://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html#applying-when-to-roles-imports-and-includes
 ---
+
 - import_tasks: 'install.yml'
+- import_tasks: 'letsencrypt.yml'
+  when: use_letsencrypt
 - import_tasks: 'ssl_self.yml'
+  when: not use_letsencrypt
 - import_tasks: 'install_ssl.yml'
+  when: not use_letsencrypt
 - import_tasks: 'configure.yml'

@@ -1,0 +1,38 @@
+# Manage SSL certificate by using letsencrypt
+---
+- name: 'Check if email is defined for letsencrypt'
+  fail:
+    msg: 'You must provide an email for usage with letsencrypt'
+  when: (letsencrypt_email == '' or letsencrypt_email is undefined)
+
+- name: 'Stop the nginx service'
+  service: 
+    name: 'nginx'
+    state: 'stopped'
+    enabled: yes
+
+- name: 'Set apt-yes default (needed for certbot)'
+  lineinfile:
+    dest: '/etc/apt/apt.conf.d/99-apt-yes'
+    state: present
+    line: 'APT::Get::Assume-Yes "true";'
+    create: yes
+
+- name: 'Install certbot (letsencrypt)'
+  get_url:
+    url: 'https://dl.eff.org/certbot-auto'
+    dest: '/usr/local/bin/certbot-auto'
+    mode: 755
+
+- name: 'SSL credentials with certbot debug'
+  debug: 
+    msg: '/usr/local/bin/certbot-auto certonly --agree-tos --standalone -m {{ letsencrypt_email }} -d ip-172-26-1-156creates={{ letsencrypt_ssl_cert_path }}'
+
+- name: 'SSL credentials with certbot'
+  command: '/usr/local/bin/certbot-auto certonly --agree-tos --standalone -m {{ letsencrypt_email }} -d ip-172-26-1-156.eu-west-3.compute.internal creates={{ letsencrypt_ssl_cert_path }}'
+
+- name: 'Setup letsencrypt renewal with cron'
+  template: 
+    src: 'letsencrypt-renew.j2'
+    dest: '/etc/cron.daily/letsencrypt-renew'
+    mode: 0755
